@@ -1,0 +1,13 @@
+.logoSW {
+  display: flex;
+  width: 200px;
+  height: auto;
+  align-items: center;
+}
+
+.button .nav-link-list {
+  border-bottom: 3px solid blue;
+  margin-bottom: -2px;
+}
+
+
