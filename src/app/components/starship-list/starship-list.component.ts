@@ -30,15 +30,18 @@ export class StarshipListComponent implements OnInit {
     this.starshipList.getStarshipList().subscribe({
       next: (data: StarshipDetails) => {
         this.starshipDetails = data.results;
-        this.starshipDetails.forEach(ship => {
-          ship.id = ship.url.split('/').reverse()[1];
+        this.starshipDetails.forEach(starship => {
+          starship.id = starship.url.split('/').reverse()[1];
         });
         console.log(this.starshipDetails);
-
       }
     })
-
   }
+
+ /* searchStarship():void {
+    this.starshipList.getStarshipList()
+
+  }*/
 
 
 

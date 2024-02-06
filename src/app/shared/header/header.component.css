@@ -5,8 +5,8 @@
   align-items: center;
 }
 
-.button .nav-link-list {
-  border-bottom: 3px solid blue;
+.active {
+  border-bottom: 4px solid blue;
   margin-bottom: -2px;
 }
 
