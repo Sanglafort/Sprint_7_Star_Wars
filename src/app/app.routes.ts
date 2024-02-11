@@ -9,7 +9,7 @@ export const routes: Routes = [
   { path: '', title: 'Home', component: HomeComponent},
   { path: 'home', title: 'Home', component: HomeComponent},
   { path: 'starships', title: 'Starships', component: StarshipListComponent},
-  { path: 'id', title: 'Starships/id', component: DetailsComponent},
+  { path: 'starships/:id', title: 'Starship Card', component: DetailsComponent},
 
   // loadComponent: () => import('./components/starship-list/starship-list.component').then(c => c.StarshipListComponent),
    // children: [{

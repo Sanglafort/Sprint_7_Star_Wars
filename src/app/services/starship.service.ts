@@ -15,9 +15,25 @@ export class StarshipService {
     return this._http.get<StarshipDetails>(this._apiUrl);
   }
 
+  getStarshipCard(id: string): Observable<any> {
+    return this._http.get<StarshipDetails>(`${this._apiUrl}/${id}`);
+  }
 
-
-
-
+  async getImages(id:string):Promise<any>{
+    try {
+      const res = await fetch(`${this._imagesUrl}/starships/${id}.jpg`);
+      if(res.ok) {
+        const resData = await res.blob();
+        const imgUrlData = URL.createObjectURL(resData);
+        console.log(imgUrlData);
+        return imgUrlData;
+      } else {
+        throw new Error ('Image not available');
+      }
+    } catch(error) {
+      console.error(error)
+      throw error
+    }
+  }
 
 }

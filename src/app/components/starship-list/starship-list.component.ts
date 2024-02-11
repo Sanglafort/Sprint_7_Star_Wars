@@ -14,11 +14,10 @@ import { StarshipDetails } from '../../interfaces/starship.interface';
   styleUrl: './starship-list.component.css'
 })
 export class StarshipListComponent implements OnInit {
-  [x: string]: any;
 
   public starshipList = inject(StarshipService);
   public starshipDetails: any[] = [];
-  public currentPage: number = 1;
+ // public currentPage: number = 1;
   // public load:boolean = true;
 
   constructor(public router: Router) {}
@@ -39,19 +38,10 @@ export class StarshipListComponent implements OnInit {
     })
   }
 
-  public seeDetails(id: string) {
-    id ? this.router.navigate(['starships', id]) : console.log ('ID not valid.')
+  public showStarship(id: string) {
+    if(id) {
+      this.router.navigate(['/starships', id])
+    }
   }
-
-
-
- /* searchStarship():void {
-    this.starshipList.getStarshipList()
-
-  }*/
-
-
-
- // public starshipsList$ = this.starshipList.getStarshipList()
 
 }

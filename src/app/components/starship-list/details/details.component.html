@@ -1,24 +1,23 @@
-<div class="container mt-4">
+<div class="container-fluid m-4"  style="width: 80%">
   <div class="row text-white border-secondary border-top border-bottom">
     <h5>STARSHIP</h5>
   </div>
-  <div class="row d-flex justify-content-center mt-4">
-    <div class="card bg-dark text-white mb-3">
+  <div class="row mt-4">
+    <div class="card bg-dark text-white justify-content-center mb-3">
       <div class="row g-0">
         <div class="col-md-6">
-          <img src="..." class="img-fluid rounded-start" alt="...">
+          <img [src]="starshipCard?.url" class="img-fluid rounded-start mt-3" alt="Starship pic">
         </div>
         <div class="col-md-6">
           <div class="card-body">
-            <h5 class="card-title">Starship.name</h5>
+            <h5 class="card-title">{{ starshipCard?.name?.toUpperCase() }}</h5>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p class="card-text">Model: starship.model</p>
-            <p class="card-text">Cost in credits: starship.cost_in_credit</p>
-            <p class="card-text">Atmosferic Speed: starship.max_atmosphering_speed</p>
-            <p class="card-text">Length: starship.length</p>
-            <p class="card-text">Manufacturer: starship.manufacturer</p>
-            <p class="card-text">Crew: starship.crew</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text"><em>Model: </em>{{ starshipCard?.model }}</p>
+            <p class="card-text"><em>Cost in credits: </em>{{ starshipCard?.cost_in_credits }}</p>
+            <p class="card-text"><em>Atmosferic Speed: </em>{{ starshipCard?.max_atmosphering_speed }}</p>
+            <p class="card-text"><em>Length: </em>{{ starshipCard?.length }}</p>
+            <p class="card-text"><em>Manufacturer: </em>{{ starshipCard?.manufacturer }}</p>
+            <p class="card-text"><em>Crew: </em>{{ starshipCard?.crew }}</p>
           </div>
         </div>
       </div>

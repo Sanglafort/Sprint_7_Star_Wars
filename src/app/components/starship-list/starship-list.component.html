@@ -1,16 +1,16 @@
 <nav class="container-fluid p-5">
 
   @for (starship of starshipDetails; track $index) {
-    <a routerLink="/id" routerLinkActive="active">
+
       <div class="row d-flex p-2 g-0">
         <div class="card">
-          <div class="card-body bg-dark text-white border">
+          <div class="card-body bg-dark text-white border" (click)="showStarship(starship.id)">
             <h5 class="card-title">{{ starship.name.toUpperCase() }}</h5>
             <p class="card-text">{{ starship.model }}</p>
           </div>
         </div>
       </div>
-    </a>
+
 
   }
 
