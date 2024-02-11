@@ -23,19 +23,17 @@
             <button type="button" class="nav-link btn btn-link text-white"
             routerLink="/home"
             routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
+            ariaCurrentWhenActive="page"
             >HOME</button>
           </li>
           <li class="nav-item">
             <button type="button" class="nav-link btn btn-link text-white"
             routerLink="/starships" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
+            ariaCurrentWhenActive="page"
             >STARSHIPS</button>
           </li>
         </ul>
     </nav>
 </div>
-
-
-
-
-
-
