@@ -6,7 +6,7 @@ export interface Starship {
 }
 
 export interface StarshipDetails {
-  id?: string;
+  id: string;
   name:                   string;
   model:                  string;
   manufacturer:           string;

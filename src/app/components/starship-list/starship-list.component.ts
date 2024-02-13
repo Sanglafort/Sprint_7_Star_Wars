@@ -17,7 +17,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 export class StarshipListComponent implements OnInit {
 
   public starshipService = inject(StarshipService);
-  // public starship: StarshipDetails[] = [];
   public starshipList: StarshipDetails[] = [];
   public currentPage: number = 1;
   public load: boolean = true;
@@ -32,15 +31,17 @@ export class StarshipListComponent implements OnInit {
     this.starshipService.getStarshipList(this.currentPage).subscribe({
       next: (data: Starship) => {
         console.log(data);
-       // this.starshipList = [...this.starshipList, data.results]
-
-        this.starshipList = data.results;
-        this.starshipList.forEach(starship => {
-          starship.id = starship.url.split('/').reverse()[1];
-        });
-        console.log(this.starshipList);
-
-
+        const moreStarships = data.results;
+        if(data.next !== null) {
+          moreStarships.forEach(starship => {
+            starship.id = starship.url.split('/').reverse()[1];
+          })
+          this.starshipList = this.starshipList.concat(moreStarships)
+          console.log(this.starshipList);
+        }
+      },
+      error: (error) => {
+        console.error('Load starships error', error)
       }
     })
   }
@@ -52,10 +53,8 @@ export class StarshipListComponent implements OnInit {
   }
 
   onScroll() {
-
     if(this.load) {
       this.currentPage ++;
-
       this.showList();
     }
   }
