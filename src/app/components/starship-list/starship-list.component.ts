@@ -4,22 +4,23 @@ import { StarshipService } from '../../services/starship.service';
 
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
-import { Starship } from '../../interfaces/starship.interface';
+import { Starship, StarshipDetails } from '../../interfaces/starship.interface';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @Component({
   selector: 'starship-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, InfiniteScrollModule, RouterModule, RouterLink, RouterLinkActive],
   templateUrl: './starship-list.component.html',
   styleUrl: './starship-list.component.css'
 })
 export class StarshipListComponent implements OnInit {
 
-  public starshipList = inject(StarshipService);
-  public starship: any[] = [];
-  public starshipDetails: any[] = [];
-  public nextPage: string = '';
-  // public load:boolean = true;
+  public starshipService = inject(StarshipService);
+  // public starship: StarshipDetails[] = [];
+  public starshipList: StarshipDetails[] = [];
+  public currentPage: number = 1;
+  public load: boolean = true;
 
   constructor(public router: Router) {}
 
@@ -28,13 +29,18 @@ export class StarshipListComponent implements OnInit {
   }
 
   public showList():void {
-    this.starshipList.getStarshipList().subscribe({
+    this.starshipService.getStarshipList(this.currentPage).subscribe({
       next: (data: Starship) => {
-        this.starshipDetails = data.results;
-        this.starshipDetails.forEach(starship => {
+        console.log(data);
+       // this.starshipList = [...this.starshipList, data.results]
+
+        this.starshipList = data.results;
+        this.starshipList.forEach(starship => {
           starship.id = starship.url.split('/').reverse()[1];
         });
-        console.log(this.starshipDetails);
+        console.log(this.starshipList);
+
+
       }
     })
   }
@@ -42,6 +48,22 @@ export class StarshipListComponent implements OnInit {
   public showStarship(id: string) {
     if(id) {
       this.router.navigate(['/starships', id])
+    }
+  }
+
+  onScroll() {
+
+    if(this.load) {
+      this.currentPage ++;
+
+      this.showList();
+    }
+  }
+
+  scrollUp() {
+    if(this.load) {
+      this.currentPage --;
+      this.showList();
     }
   }
 

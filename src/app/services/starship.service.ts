@@ -11,8 +11,8 @@ export class StarshipService {
   private readonly _apiUrl = 'https://swapi.dev/api/starships';
   private readonly _imagesUrl = 'https://starwars-visualguide.com/assets/img';
 
-  getStarshipList(url?: string): Observable<Starship> {
-    return this._http.get<Starship>(this._apiUrl);
+  getStarshipList(page: number): Observable<Starship> {
+    return this._http.get<Starship>(`${this._apiUrl}/?page=${page.toString()}`)
   }
 
   getStarshipCard(id: string): Observable<any> {
@@ -34,10 +34,6 @@ export class StarshipService {
       console.error(error)
       throw error
     }
-  }
-
-  public getNextPage(page: number): Observable<Starship> {
-    return this._http.get<Starship>(`${this._apiUrl}/?page=${page.toString()}`)
   }
 
 }

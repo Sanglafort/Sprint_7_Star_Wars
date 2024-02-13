@@ -1,6 +1,11 @@
-<nav class="container-fluid p-5">
 
-  @for (starship of starshipDetails; track $index) {
+<section class="container-fluid p-5"
+infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="100"
+(scrolled)="onScroll()" (scrolledUp)="scrollUp()">
+
+@if (starshipList.length > 0) {
+
+  @for (starship of starshipList; track $index) {
 
       <div class="row d-flex p-2 g-0">
         <div class="card">
@@ -11,11 +16,9 @@
         </div>
       </div>
   }
+}
+
+</section>
 
 
-  <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-    <button type="button" class="btn btn-outline-warning btn-lg mt-3" >View More</button>
-  </div>
 
-
-</nav>
