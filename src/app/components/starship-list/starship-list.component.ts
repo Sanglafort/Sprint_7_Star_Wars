@@ -4,7 +4,7 @@ import { StarshipService } from '../../services/starship.service';
 
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
-import { StarshipDetails } from '../../interfaces/starship.interface';
+import { Starship } from '../../interfaces/starship.interface';
 
 @Component({
   selector: 'starship-list',
@@ -16,8 +16,9 @@ import { StarshipDetails } from '../../interfaces/starship.interface';
 export class StarshipListComponent implements OnInit {
 
   public starshipList = inject(StarshipService);
+  public starship: any[] = [];
   public starshipDetails: any[] = [];
- // public currentPage: number = 1;
+  public nextPage: string = '';
   // public load:boolean = true;
 
   constructor(public router: Router) {}
@@ -28,7 +29,7 @@ export class StarshipListComponent implements OnInit {
 
   public showList():void {
     this.starshipList.getStarshipList().subscribe({
-      next: (data: StarshipDetails) => {
+      next: (data: Starship) => {
         this.starshipDetails = data.results;
         this.starshipDetails.forEach(starship => {
           starship.id = starship.url.split('/').reverse()[1];
@@ -43,5 +44,10 @@ export class StarshipListComponent implements OnInit {
       this.router.navigate(['/starships', id])
     }
   }
+
+
+
+
+
 
 }

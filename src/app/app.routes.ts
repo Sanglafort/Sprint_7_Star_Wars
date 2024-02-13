@@ -11,11 +11,6 @@ export const routes: Routes = [
   { path: 'starships', title: 'Starships', component: StarshipListComponent},
   { path: 'starships/:id', title: 'Starship Card', component: DetailsComponent},
 
-  // loadComponent: () => import('./components/starship-list/starship-list.component').then(c => c.StarshipListComponent),
-   // children: [{
-   //   path:'starship/:id',
-   //   loadComponent: () => import('./components/starship-list/details/details.component').then(c => c.DetailsComponent)
-
   { path: '**', redirectTo: ''},
 
   /*Del tutorial:

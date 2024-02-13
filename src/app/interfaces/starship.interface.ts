@@ -1,4 +1,4 @@
-export interface SearchResponse {
+export interface Starship {
   count:    number;
   next:     string;
   previous: null;

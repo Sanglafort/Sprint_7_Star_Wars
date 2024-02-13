@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
-import { StarshipDetails } from "../interfaces/starship.interface";
+import { Starship, StarshipDetails } from "../interfaces/starship.interface";
 
 
 @Injectable({ providedIn: 'root' })
@@ -11,8 +11,8 @@ export class StarshipService {
   private readonly _apiUrl = 'https://swapi.dev/api/starships';
   private readonly _imagesUrl = 'https://starwars-visualguide.com/assets/img';
 
-  getStarshipList(): Observable<StarshipDetails> {
-    return this._http.get<StarshipDetails>(this._apiUrl);
+  getStarshipList(url?: string): Observable<Starship> {
+    return this._http.get<Starship>(this._apiUrl);
   }
 
   getStarshipCard(id: string): Observable<any> {
@@ -34,6 +34,10 @@ export class StarshipService {
       console.error(error)
       throw error
     }
+  }
+
+  public getNextPage(page: number): Observable<Starship> {
+    return this._http.get<Starship>(`${this._apiUrl}/?page=${page.toString()}`)
   }
 
 }
