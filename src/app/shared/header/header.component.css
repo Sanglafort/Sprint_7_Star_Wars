@@ -6,7 +6,7 @@
 }
 
 .active {
-  border-bottom: 4px solid rgba(255,193,7,.5);
+  border-bottom: 4px solid rgba(255, 193, 7, 0.888);
   margin-bottom: -2px;
 }
 

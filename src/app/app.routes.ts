@@ -8,15 +8,14 @@ import { DetailsComponent } from './components/starship-list/details/details.com
 export const routes: Routes = [
   { path: '', title: 'Home', component: HomeComponent},
   { path: 'home', title: 'Home', component: HomeComponent},
+  { path: 'login' , component: LoginComponent},
+  { path: 'register' , component: RegisterComponent},
   { path: 'starships', title: 'Starships', component: StarshipListComponent},
   { path: 'starships/:id', title: 'Starship Card', component: DetailsComponent},
 
   { path: '**', redirectTo: ''},
 
   /*Del tutorial:
-  { path: '' , component: HomeComponent}, // , canActivate: [AuthGuard]},
-  { path: 'account/login' , component: LoginComponent},
-  { path: 'account/register' , component: RegisterComponent},
-  { path: '**' , redirectTo: ''},*/
+  { path: '' , component: HomeComponent}, // , canActivate: [AuthGuard]},*/
 
 ];
