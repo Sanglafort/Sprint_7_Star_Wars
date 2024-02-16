@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { ValidatorService } from '../../services/validator.service';
 
 @Component({
   selector: 'login',
@@ -12,12 +13,19 @@ import { RouterLink } from '@angular/router';
 export class LoginComponent {
 
   public loginForm = this.fb.group({
-    name: ['', Validators.required ],
+    userName: ['', Validators.required ],
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required ]
-
   })
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private validatorService: ValidatorService
+    ) {}
+
+  isValidField( field: string ) {
+    return this.validatorService.isValidField( this.loginForm, field );
+
+  }
 
 }

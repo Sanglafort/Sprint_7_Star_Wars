@@ -1,40 +1,42 @@
 <form [formGroup]="loginForm">
-  <div class="card text-center text-white bg-dark w-75">
-    <div class="card-body">
-      <!--Nombre usuario-->
-      <div class="row mb-2">
-        <label class="col col-form-label">Username</label>
-        <div class="col-sm-9">
-          <input type="text"
-          class="form-control"
-          formControlName="name"
-          placeholder="Username">
-        </div>
-      </div>
+  <div class="card p-5 w-75">
+    <div class="card-body text-center mt-3">
+      <h2 class="card-title">Enter in your account</h2>
+      <h5>Log into your Star Wars account. If you don't have one, you could create one.</h5>
 
       <!--Email-->
-      <div class="row mb-2">
-        <label class="col col-form-label">Email</label>
+      <div class="row mt-4 mb-2">
+        <label class="col col-form-label">Enter your email</label>
         <div class="col-sm-9">
           <input type="text"
           class="form-control"
           formControlName="email"
           placeholder="Email">
+          @if (isValidField('email')) {
+            <span class="form-text text-danger">
+              Please, write a valid email
+            </span>
+            }
         </div>
       </div>
 
       <!--Password-->
       <div class="row mb-2">
-        <label class="col col-form-label">Password</label>
+        <label class="col col-form-label">Enter your password</label>
         <div class="col-sm-9">
           <input type="password"
           class="form-control"
           formControlName="password"
           placeholder="Password">
+          @if (isValidField('password')) {
+            <span class="form-text text-danger">
+              Please, write your password
+            </span>
+            }
         </div>
       </div>
 
-      <button class="btn btn-outline-warning btn-lg mt-3">SIGN IN</button>
+      <button class="btn btn-warning btn-lg mt-3">Continue</button>
       <div class="mt-2">
         Not a member? <a routerLink="/register">Register</a>
       </div>

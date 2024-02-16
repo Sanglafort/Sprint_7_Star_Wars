@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ValidatorService } from '../../services/validator.service';
 // import * as customValidators from '../../../shared/validators/validators';
 // import { ValidatorsService } from '../../../shared/service/validators.service';
 // import { EmailValidatorService } from '../../../shared/validators/email-validator.service';
@@ -14,25 +15,24 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class RegisterComponent {
 
-  public myForm: FormGroup = this.fb.group({
-    name: ['', [ Validators.required ]],
+  public registerForm: FormGroup = this.fb.group({
+    userName: ['', [ Validators.required ]],
     email: ['', [ Validators.required, ]],
-    username: ['', [Validators.required, ]],
     password: ['', [Validators.required, Validators.minLength(8)]],
-    password2: ['', [Validators.required]],
+    confirmPassword: ['', [Validators.required]],
   });
 
   constructor(
     private fb: FormBuilder,
-    // private validatorsService: ValidatorsService
+     private validatorService: ValidatorService,
     ) {}
 
-//  isValidField( field: string ) {
-//    return this.validatorsService.isValidField( this.myForm, field );
-//  }
+  isValidField( field: string ) {
+    return this.validatorService.isValidField( this.registerForm, field );
+  }
 
   onSubmit() {
-    this.myForm.markAllAsTouched();
+    this.registerForm.markAllAsTouched();
   }
 
 }

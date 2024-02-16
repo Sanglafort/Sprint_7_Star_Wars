@@ -1,86 +1,76 @@
-<p>register works!</p>
+<form [formGroup]="registerForm">
+  <div class="card p-5 w-75">
+    <div class="card-body text-center mt-3">
+      <h2 class="card-title">Create your account</h2>
 
-<div class="row">
-  <div class="col">
-
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
-
-      <!-- Nombre -->
-      <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Nombre</label>
+      <!--UserName-->
+      <div class="row mt-4 mb-2">
+        <label class="col col-form-label">Enter your username</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" formControlName="name" placeholder="Nombre del usuario">
-          <!--@if (isValidField('name')) {
-          <span class="form-text text-danger">
-            Debe de ser en formato de nombre y apellido
-          </span>
-          }-->
+          <input type="text"
+          class="form-control"
+          formControlName="userName"
+          placeholder="Username">
+          @if (isValidField('userName')) {
+            <span class="form-text text-danger">
+              Please, choose a username
+            </span>
+            }
         </div>
       </div>
 
-      <!-- Email -->
-      <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Email</label>
+      <!--Email-->
+      <div class="row mb-2">
+        <label class="col col-form-label">Enter your email</label>
         <div class="col-sm-9">
-          <input type="email" class="form-control" formControlName="email" placeholder="Email del usuario">
-          <!--@if (isValidField('email')) {
-          <span class="form-text text-danger">
-            mensaje de error del email
-          </span>
-          }-->
+          <input type="text"
+          class="form-control"
+          formControlName="email"
+          placeholder="Email">
+          @if (isValidField('email')) {
+            <span class="form-text text-danger">
+              Please, write a valid email
+            </span>
+            }
         </div>
       </div>
 
-      <!-- Username -->
-      <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Username</label>
+      <!--Password-->
+      <div class="row mb-2">
+        <label class="col col-form-label">Enter your password</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" formControlName="username" placeholder="Nombre código del usuario">
-          <!--@if (isValidField('username')) {
-          <span class="form-text text-danger">
-            El username no puede ser Strider
-          </span>
-          }-->
+          <input type="password"
+          class="form-control"
+          formControlName="password"
+          placeholder="Password">
+          @if (isValidField('password')) {
+            <span class="form-text text-danger">
+              Please, write your password
+            </span>
+            }
         </div>
       </div>
 
-      <!-- Password -->
-      <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Password</label>
+      <!--Confirm Password-->
+      <div class="row mb-2">
+        <label class="col col-form-label">Enter your password again</label>
         <div class="col-sm-9">
-          <input type="password" class="form-control" formControlName="password" placeholder="Password de su cuenta">
-          <!--@if (isValidField('password')) {
-          <span class="form-text text-danger">
-            La contraseña debe de ser mayor de 6 caracteres.
-          </span>
-        }-->
+          <input type="password"
+          class="form-control"
+          formControlName="confirmPassword"
+          placeholder="Password">
+          @if (isValidField('confirmPassword')) {
+            <span class="form-text text-danger">
+              Please, write your password once more
+            </span>
+            }
         </div>
       </div>
 
-      <!-- Password2 -->
-      <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Confirmar</label>
-        <div class="col-sm-9">
-          <input type="password" class="form-control" formControlName="password2" placeholder="Confirmar la contraseña">
-         <!-- @if (isValidField('password2')) {
-          <span class="form-text text-danger">
-            Las contraseñas deben de ser iguales
-          </span>
-        }-->
-        </div>
-      </div>
+      <button class="btn btn-warning btn-lg mt-3">Create account</button>
 
-
-      <div class="row">
-        <div class="col">
-          <button class="btn btn-primary float-end" type="submit">
-            Crear
-          </button>
-        </div>
-      </div>
-
-
-    </form>
+    </div>
   </div>
-</div>
+</form>
+
 
