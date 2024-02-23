@@ -1,38 +1,43 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ValidatorService } from '../../services/validator.service';
+import { AuthService } from '../../services/auth.service';
+import { Router, RouterLink } from '@angular/router';
+
 // import * as customValidators from '../../../shared/validators/validators';
-// import { ValidatorsService } from '../../../shared/service/validators.service';
 // import { EmailValidatorService } from '../../../shared/validators/email-validator.service';
 
 @Component({
   selector: 'register-page',
   standalone: true,
-  imports: [ CommonModule, ReactiveFormsModule ],
+  imports: [ CommonModule, ReactiveFormsModule, RouterLink ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
 
-  public registerForm: FormGroup = this.fb.group({
-    userName: ['', [ Validators.required ]],
-    email: ['', [ Validators.required, ]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
-    confirmPassword: ['', [Validators.required]],
+  public registerForm = this.fb.group({
+    userName: ['', Validators.required ],
+    email: ['', [ Validators.required, Validators.email ]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    confirmPassword: ['', Validators.required ],
   });
 
   constructor(
     private fb: FormBuilder,
-     private validatorService: ValidatorService,
+    private validatorService: ValidatorService,
+    private authService: AuthService,
+    private router: Router,
     ) {}
 
   isValidField( field: string ) {
-    return this.validatorService.isValidField( this.registerForm, field );
+    return this.validatorService.isValidField( this.registerForm, field);
   }
 
-  onSubmit() {
-    this.registerForm.markAllAsTouched();
+  isEqualPassword () {
+    return this.validatorService.passwordMatchValidator( this.registerForm );
   }
+
 
 }

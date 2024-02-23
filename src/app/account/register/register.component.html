@@ -58,13 +58,19 @@
           <input type="password"
           class="form-control"
           formControlName="confirmPassword"
-          placeholder="Password">
+          placeholder="Confirm password">
           @if (isValidField('confirmPassword')) {
-            <span class="form-text text-danger">
+            <span class="form-text text-danger block">
               Please, write your password once more
             </span>
             }
-        </div>
+          @if (isEqualPassword()) {
+              <span class="form-text text-danger block">
+                Password do not match
+              </span>
+              }
+
+         </div>
       </div>
 
       <button class="btn btn-warning btn-lg mt-3">Create account</button>

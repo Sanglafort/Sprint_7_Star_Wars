@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ValidatorService } from '../../services/validator.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'login',
+  selector: 'login-page',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

@@ -9,5 +9,10 @@
   border-bottom: 4px solid rgba(255, 193, 7, 0.888);
   margin-bottom: -2px;
 }
+.icons {
+  color: white;
+  margin: 0.3rem;
+  padding-left: 0%;
+}
 
 

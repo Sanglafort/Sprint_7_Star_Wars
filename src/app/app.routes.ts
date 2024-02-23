@@ -13,7 +13,7 @@ export const routes: Routes = [
   { path: 'starships', title: 'Starships', component: StarshipListComponent},
   { path: 'starships/:id', title: 'Starship Card', component: DetailsComponent},
 
-  { path: '**', redirectTo: ''},
+  { path: '**', redirectTo: '', pathMatch: 'full'},
 
   /*Del tutorial:
   { path: '' , component: HomeComponent}, // , canActivate: [AuthGuard]},*/
