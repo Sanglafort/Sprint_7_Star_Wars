@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm">
+<form [formGroup]="registerForm" (ngSubmit)="register()">
   <div class="card p-5 w-75">
     <div class="card-body text-center mt-3">
       <h2 class="card-title">Create your account</h2>
@@ -59,16 +59,12 @@
           class="form-control"
           formControlName="confirmPassword"
           placeholder="Confirm password">
-          @if (isValidField('confirmPassword')) {
+
+          @if (isEqualPassword()) {
             <span class="form-text text-danger block">
-              Please, write your password once more
+              Password do not match
             </span>
             }
-          @if (isEqualPassword()) {
-              <span class="form-text text-danger block">
-                Password do not match
-              </span>
-              }
 
          </div>
       </div>

@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ValidatorService } from '../../services/validator.service';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterLink } from '@angular/router';
-
-// import * as customValidators from '../../../shared/validators/validators';
-// import { EmailValidatorService } from '../../../shared/validators/email-validator.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'register-page',
@@ -27,7 +25,7 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private validatorService: ValidatorService,
-    private authService: AuthService,
+    private http: HttpClient,
     private router: Router,
     ) {}
 
@@ -39,5 +37,13 @@ export class RegisterComponent {
     return this.validatorService.passwordMatchValidator( this.registerForm );
   }
 
+  register() {
+    this.http.post<any>('http://localhost:3000/users', this.registerForm.value)
+    .subscribe(res => {
+      alert('Register OK!');
+      this.registerForm.reset();
+      this.router.navigate(['login']);
+    })
+  }
 
 }
