@@ -1,10 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { CommonModule } from '@angular/common';
+import { HeaderComponent } from './shared/header/header.component';
+import { ActivatedRoute } from '@angular/router';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent, CommonModule, HeaderComponent, ActivatedRoute],
     }).compileComponents();
   });
 
