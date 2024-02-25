@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
-import { Starship, StarshipDetails } from "../interfaces/starship.interface";
+import { Pilot, Starship, StarshipDetails } from "../interfaces/starship.interface";
 
 
 @Injectable({ providedIn: 'root' })
@@ -19,6 +19,8 @@ export class StarshipService {
     return this._http.get<StarshipDetails>(`${this._apiUrl}/${id}`);
   }
 
+  // Mostrar starship-cards
+
   async getImages(id:string):Promise<any>{
     try {
       const res = await fetch(`${this._imagesUrl}/starships/${id}.jpg`);
@@ -33,6 +35,52 @@ export class StarshipService {
     } catch(error) {
       console.error(error)
       throw error
+    }
+  }
+
+  // Mostrar pilotos
+
+  showPilot(url: string) {
+    return this._http.get<any>(url);
+  }
+
+  async showPilotImage(id: string):Promise<any> {
+    try {
+      const res = await fetch(`${this._imagesUrl}/characters/${id}.jpg`);
+
+      if(res.ok) {
+        const resData = await res.blob();
+        const imageUrl = URL.createObjectURL(resData);
+        console.log(imageUrl);
+        return imageUrl;
+      } else throw new Error ('Image not avalaible');
+
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  // Mostrar films
+
+  showFilm(url: string) {
+    return this._http.get<any>(url);
+  }
+
+  async showFilmImage(id: string):Promise<any> {
+    try {
+      const res = await fetch(`${this._imagesUrl}/films/${id}.jpg`);
+
+      if(res.ok) {
+        const resData = await res.blob();
+        const imageUrl = URL.createObjectURL(resData);
+        console.log(imageUrl);
+        return imageUrl;
+      } else throw new Error ('Image not avalaible');
+
+    } catch (error) {
+      console.error(error);
+      throw error;
     }
   }
 

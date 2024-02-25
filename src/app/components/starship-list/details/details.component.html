@@ -25,6 +25,18 @@
       </div>
     </div>
 
+    @defer(when pilotsLoaded) {
+      @if (pilots.length > 0) {
+        <app-pilots [pilotsUrls]="pilots"></app-pilots>
+      }
+    }
+
+    @defer(when filmsLoaded) {
+      @if (films.length > 0) {
+        <app-films [filmsUrls]="films"></app-films>
+      }
+    }
+
   </div>
 
 </div>

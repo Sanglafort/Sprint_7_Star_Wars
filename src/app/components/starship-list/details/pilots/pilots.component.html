@@ -1,0 +1,15 @@
+
+<div class="row border-top border-bottom border-secondary mt-5 p-2">
+  <h5 class="title text-white">PILOTS</h5>
+</div>
+
+<div class="row justify-content-center mt-2 mb-2">
+  @for(pilot of pilotsArray; track $index){
+  <div class="card bg-dark mt-3" style="width: 20rem;">
+    <img [src]="pilot.imageUrl" class="card-img-top" [alt]="pilot.name">
+    <div class="card-body bg-dark">
+      <h6 class="card-text text-white">{{ pilot.name.toUpperCase() }}</h6>
+    </div>
+  </div>
+  }
+</div>

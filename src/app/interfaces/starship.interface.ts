@@ -26,3 +26,9 @@ export interface StarshipDetails {
   edited:                 Date;
   url:                    string;
 }
+
+export interface Pilot {
+  id: string;
+  name: string;
+  imageUrl: string;
+}
