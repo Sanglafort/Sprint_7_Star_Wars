@@ -1,3 +1,14 @@
+
+export const AuthGuard = () => {
+  if(localStorage.getItem('id')) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+
 /*import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 

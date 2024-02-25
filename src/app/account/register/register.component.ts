@@ -25,7 +25,7 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private validatorService: ValidatorService,
-    private http: HttpClient,
+    private authService: AuthService,
     private router: Router,
     ) {}
 
@@ -37,13 +37,21 @@ export class RegisterComponent {
     return this.validatorService.passwordMatchValidator( this.registerForm );
   }
 
-  register() {
-    this.http.post<any>('http://localhost:3000/users', this.registerForm.value)
-    .subscribe(res => {
-      alert('Register OK!');
-      this.registerForm.reset();
-      this.router.navigate(['login']);
-    })
+  async onSubmit() {
+    const response = await this.authService.register( this.registerForm.value );
+    console.log(response);
+    localStorage.setItem('user', JSON.stringify(response));
+    alert('Register OK');
+    this.registerForm.reset();
+    this.router.navigate(['login']);
   }
+
+  logout() {
+   // localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.router.navigate(['login']);
+  }
+
+
 
 }

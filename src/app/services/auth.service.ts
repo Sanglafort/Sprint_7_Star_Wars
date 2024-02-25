@@ -1,7 +1,7 @@
 
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
-import { BehaviorSubject, Observable, tap } from "rxjs";
+import { BehaviorSubject, Observable, firstValueFrom, tap } from "rxjs";
 import { User } from "../interfaces/user.interface";
 import { Router } from "@angular/router";
 
@@ -9,6 +9,27 @@ import { Router } from "@angular/router";
   providedIn: 'root'
 })
 export class AuthService {
+
+  private http = inject(HttpClient);
+  private baseUrl: string;
+  userValue: any;
+
+  constructor() {
+    this.baseUrl = 'http://localhost:3000/users';
+  }
+
+  register( formValue: any ) {
+    return firstValueFrom(
+      this.http.post<any>(`${this.baseUrl}`, formValue)
+    )
+  }
+
+  login( formValue: any ) {
+    return firstValueFrom(
+      this.http.post<any>(`${this.baseUrl}`, formValue)
+
+    )
+  }
 
  /* private apiUrl: string = 'http://localhost:3000/';
   private user?: User;
@@ -55,7 +76,7 @@ export class AuthService {
     localStorage.clear()
   }*/
 
-  private apiUrl: string = 'http://localhost:3000/';
+  /*private apiUrl: string = 'http://localhost:3000/';
 
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private loggedUser?: string;
@@ -84,6 +105,6 @@ export class AuthService {
   public logout() {
     localStorage.removeItem(this.JWT_TOKEN);
     this.isAuthenticatedSubject.next(false)
-  }
+  }*/
 
 }

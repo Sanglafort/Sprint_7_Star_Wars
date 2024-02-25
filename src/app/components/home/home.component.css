@@ -1,3 +1,14 @@
 body {
   background-color: black;
 }
+
+section {
+  width: 700px;
+}
+
+.image {
+  display: flex;
+  margin-top: 40px;
+  margin-left: 40px;
+
+}

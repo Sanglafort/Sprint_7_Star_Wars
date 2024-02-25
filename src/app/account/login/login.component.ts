@@ -17,7 +17,7 @@ export class LoginComponent {
   public loginForm = this.fb.group({
     userName: ['', Validators.required ],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required ]
+    password: ['', [Validators.required, Validators.minLength(6)] ]
   })
 
   constructor(
@@ -31,7 +31,7 @@ export class LoginComponent {
     return this.validatorService.isValidField( this.loginForm, field );
   }
 
-  login() {
+  onSubmit() {
     this.http.get<any>('http://localhost:3000/users')
     .subscribe(res => {
       const user = res.find((a:any) => {
@@ -39,6 +39,7 @@ export class LoginComponent {
       });
       if(user) {
         alert('Login OK');
+        console.log(res);
         this.loginForm.reset();
         this.router.navigate(['starships'])
       } else {
