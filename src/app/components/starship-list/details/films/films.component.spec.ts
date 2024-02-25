@@ -11,7 +11,7 @@ describe('FilmsComponent', () => {
       imports: [FilmsComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(FilmsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -20,4 +20,14 @@ describe('FilmsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call showFilms when filmsUrls change', () => {
+    spyOn(component, 'showFilms');
+    component.filmsUrls = ['url1', 'url2'];
+    component.ngOnChanges({ filmsUrls: { currentValue: component.filmsUrls } } as any);
+    expect(component.showFilms).toHaveBeenCalled();
+  });
+
+
 });
+

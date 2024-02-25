@@ -91,6 +91,20 @@
             ],
             "scripts": []
           }
+        },
+        "nightwatch-run": {
+          "builder": "@nightwatch/schematics:nightwatch",
+          "options": {
+            "devServerTarget": "Sprint_7_Star_Wars:serve",
+            "tsConfig": "../nightwatch/tsconfig.e2e.json",
+            "config": "./nightwatch.conf.js",
+            "env": "chrome"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "Sprint_7_Star_Wars:serve:production"
+            }
+          }
         }
       }
     }

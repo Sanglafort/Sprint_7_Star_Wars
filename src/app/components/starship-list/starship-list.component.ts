@@ -67,8 +67,4 @@ export class StarshipListComponent implements OnInit {
   }
 
 
-
-
-
-
 }

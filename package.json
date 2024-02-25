@@ -2,6 +2,8 @@
   "name": "sprint-7-star-wars",
   "version": "0.0.0",
   "scripts": {
+    "e2e": "ng e2e",
+    "e2e:test": "./node_modules/.bin/nightwatch --env 'chrome' --config './nightwatch.conf.js'",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -32,7 +34,13 @@
     "@angular-devkit/build-angular": "^17.0.5",
     "@angular/cli": "^17.0.5",
     "@angular/compiler-cli": "^17.0.0",
+    "@nightwatch/angular": "3.0.0",
+    "@nightwatch/schematics": "^1.2.1",
     "@types/jasmine": "~5.1.0",
+    "@types/nightwatch": "2.3.31",
+    "@types/node": "20.11.20",
+    "chromedriver": "122.0.3",
+    "jasmine": "^5.1.0",
     "jasmine-core": "~5.1.0",
     "json-server": "^1.0.0-alpha.23",
     "json-server-auth": "^2.1.0",
@@ -41,6 +49,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "nightwatch": "3.4.1",
+    "ts-node": "10.9.2",
     "typescript": "~5.2.2"
   }
 }
