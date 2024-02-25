@@ -1,1 +1,15 @@
-<p>films works!</p>
+<div class="row border-top border-bottom border-secondary mt-5 p-2">
+  <h5 class="title text-white">FILMS</h5>
+</div>
+
+<div class="row justify-content-center mt-2 mb-2">
+  @for(film of filmsArray; track $index){
+  <div class="card bg-dark mt-3" style="width: 20rem;">
+    <img [src]="film.imageUrl" class="card-img-top" [alt]="film.title">
+    <div class="card-body bg-dark">
+      <h6 class="card-title text-white">{{ film.title.toUpperCase() }}</h6>
+      <p class="card-text text-white">{{ film.episode }}</p>
+    </div>
+  </div>
+  }
+</div>

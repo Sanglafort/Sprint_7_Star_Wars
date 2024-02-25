@@ -32,3 +32,10 @@ export interface Pilot {
   name: string;
   imageUrl: string;
 }
+
+export interface Film {
+  id: string;
+  title: string;
+  episode: string;
+  imageUrl: string;
+}
