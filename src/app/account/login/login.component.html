@@ -1,12 +1,14 @@
+
+<div class="row d-flex justify-content-center">
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div class="card p-5 w-75">
     <div class="card-body text-center mt-3">
       <h2 class="card-title">Enter in your account</h2>
-      <h5>Log into your Star Wars account. If you don't have one, you could create one.</h5>
+      <p>Log into your Star Wars account. If you don't have one, you could create one.</p>
 
       <!--Email-->
       <div class="row mt-4 mb-2">
-        <label class="col col-form-label">Enter your email</label>
+        <label class="col col-form-label"></label>
         <div class="col-sm-9">
           <input type="text"
           class="form-control"
@@ -22,7 +24,7 @@
 
       <!--Password-->
       <div class="row mb-2">
-        <label class="col col-form-label">Enter your password</label>
+        <label class="col col-form-label"></label>
         <div class="col-sm-9">
           <input type="password"
           class="form-control"
@@ -43,3 +45,4 @@
     </div>
   </div>
 </form>
+</div>

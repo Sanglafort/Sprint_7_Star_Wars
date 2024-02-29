@@ -3,6 +3,7 @@ form {
   justify-content: center;
   align-items: center;
   margin-top: 7rem;
+  width: 900px;
 }
 
 .row {
@@ -14,5 +15,15 @@ form {
 
 a {
   color: rgba(255, 193, 7, 0.888)
+}
+
+button {
+  width: 75%;
+  border-radius: 30px;
+}
+
+input {
+  background-color: #E9EBF0;
+  border: 0;
 }
 
