@@ -33,14 +33,14 @@ export class AuthService {
     localStorage.setItem('token', 'TOKEN_SECRET');
   }
 
-  login(username: string, password: string) {
-    return this.http.post<User>('http://localhost:3000/login', { username, password })
-        .pipe(map(user => {
-            localStorage.setItem('user', JSON.stringify(user));
-            this.userSubject.next(user);
-            return user;
-        }));
-}
+  login(email: string, password: string) {
+    return this.http.post<User>('http://localhost:3000/login', { email, password })
+      .pipe(map(user => {
+        localStorage.setItem('user', JSON.stringify(user));
+        this.userSubject.next(user);
+        return user;
+      }));
+  }
 
   public logout() {
     this.logedIn.next(false);

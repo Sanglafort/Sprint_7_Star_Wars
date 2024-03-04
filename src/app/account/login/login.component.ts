@@ -5,7 +5,6 @@ import { ValidatorService } from '../../services/validator.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
-import { first } from 'rxjs';
 
 @Component({
   selector: 'login-page',
@@ -25,10 +24,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private validatorService: ValidatorService,
-    private http: HttpClient,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute,
     ) {}
 
   ngOnInit() {
@@ -43,38 +40,22 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    this.authService.login(this.loginForm.value.userName, this.loginForm.value.password)
-            .pipe(first())
-            .subscribe({
-                next: () => {
-                    // get return url from query parameters or default to home page
-                    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-                    this.router.navigateByUrl(returnUrl);
-                },
-                error: error => {
-                    this.error = error;
-                    this.loading = false;
-                }
-            });
+    if(this.loginForm.invalid) {
+      return;
+    }
 
+    this.loading = true;
 
-   // this.submitted = true;
-   // this.loading = true;
-   /* this.authService.login(this.loginForm.value.email, this.loginForm.value.password).pipe(first())
-    .subscribe(res => {
-      const user = res.find((a:any) => {
-        return a.email === this.loginForm.value.email &&
-        a.password === this.loginForm.value.password;
-      })
-      if(user) {
+    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
+      next: (res) => {
         alert('Login OK');
         this.loginForm.reset();
-        localStorage.setItem('user', JSON.stringify(res));
+        localStorage.setItem('token', JSON.stringify(res.accessToken));
         this.router.navigate(['starships'])
       }
-    })
-  }
 
-}*/
-  }
+    })
+
+}
+
 }

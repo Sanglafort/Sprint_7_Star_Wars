@@ -28,4 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Running backend
 
-Run `json-server db.json json-server-auth` or `npx json-server-auth db.json` to execute your backend.
+Run `npx json-server-auth db.json` to execute your backend.
